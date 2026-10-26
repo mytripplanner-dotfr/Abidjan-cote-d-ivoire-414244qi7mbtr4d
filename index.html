@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Douceur lagunaire et immersion relaxante à Abidjan </title>
+    <link rel="icon" type="image/png" href="https://api.mytripplanner.fr/api/files/pbc_1321337024/47976eld0rscwbc/favicon_ytvg76obie.svg?thumb=100x100&token="/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      template: {
+                          sable: '#FFEDD5', 
+                          ocre: '#F97316',   // Orange Vibrant (Brand Accent)
+                          roche: '#0F172A',  // Bleu Nuit (Brand Dark)
+                          ciel: '#0D9488',   // Vert Lagon (Brand Primary)
+                          bg: '#FFF7ED'      // C'est un blanc cassé chaud, parfait pour la lecture et le contraste.
+                      }
+                  },
+                  fontFamily: {
+                      sans: ['"Plus Jakarta Sans"', 'sans-serif'], // Nouvelle police corps
+                      serif: ['"Outfit"', 'sans-serif'],           // Nouvelle police titres
+                  }
+              }
+          }
+      }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        
+        /* 2. FORÇAGE DES GRAISSES (Comme sur la Landing Page) */
+        .font-sans { font-weight: 600 !important; }
+        .font-serif { font-weight: 800 !important; }
+
+        /* Ligne verticale de la timeline */
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; margin-left: -1px; }
+        }
+
+        /* Style des cartes Info */
+        .tip-card {
+            border-left: 4px solid #F97316; /* ocre */
+            background-color: #FFF7ED;
+        }
+
+        /* Masquer la scrollbar de la nav mobile tout en gardant le scroll */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-template-bg text-template-roche antialiased">
+    
+    <nav id="nav-desktop" class="hidden md:flex fixed top-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200 py-4 px-8 justify-between items-center shadow-sm transition-transform duration-300 -translate-y-full">
+        <a href="#top" class="text-xl font-serif font-bold tracking-widest text-template-roche">MyTrip<span class="text-template-ocre">Planner</span></a>
+        <div class="space-x-6 text-sm font-bold text-gray-600">
+            <a href="#jour-1" class="nav-item-desktop hover:text-template-ocre transition">Le Parcours</a>
+            <a href="#pratique" class="nav-item-desktop hover:text-template-ocre transition">Infos Pratiques</a>
+        </div>
+    </nav>
+
+    <nav id="nav-mobile" class="md:hidden fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-200 py-3 pl-4 overflow-x-auto hide-scroll whitespace-nowrap shadow-md transition-transform duration-300 -translate-y-full">
+        <div class="flex space-x-2 pr-4" id="mobile-menu-container">
+            <a href="#top" class="inline-block px-3 py-1 bg-template-roche text-white rounded-full text-xs font-bold shadow-sm">Top</a>
+            
+                <a href="#jour-1" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J1 Arrivée et quiétude au bord de la lagune</a>
+            
+                <a href="#jour-2" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J2 Héritage culturel et sérénité au Plateau</a>
+            
+                <a href="#jour-3" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J3 Bain de chlorophylle au Parc du Banco</a>
+            
+                <a href="#jour-4" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J4 Nostalgie coloniale et embruns à Grand-Bassam</a>
+            
+                <a href="#jour-5" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J5 Escapade florale et créative à Bingerville</a>
+            
+                <a href="#jour-6" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J6 Parenthèse insulaire sur l’Île Boulay</a>
+            
+                <a href="#jour-7" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J7 Art contemporain et flâneries de Cocody</a>
+            
+                <a href="#jour-8" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J8 Dernières saveurs et retour vers Conakry</a>
+            
+            <a href="#pratique" class="mobile-link inline-block px-3 py-1 border border-gray-300 text-gray-500 rounded-full text-xs font-bold">Infos</a>
+        </div>
+    </nav>
+
+    <header id="top" class="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/header.png" || 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021'}');">
+        
+        <div class="relative z-20 text-center text-white px-4 max-w-3xl animate-fade-in-up">
+            <p class="font-sans text-template-sable tracking-[0.2em] mb-4 uppercase text-xs font-bold">Feuille de Route</p>
+            <h1 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-lg">ABIDJAN- COTE D’ IVOIRE</h1>
+            <p class="font-sans text-lg md:text-xl text-gray-100 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">Douceur lagunaire et immersion relaxante à Abidjan</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-bold mb-10">
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🗓️ 8 jours</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">💰 Environ 765 €/personne</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🛬 2h00 depuis Conakry international airport, guinee</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="itineraire" class="max-w-6xl mx-auto px-4 py-16 relative">
+        <div class="text-center mb-16">
+            <h2 class="text-template-ocre font-bold tracking-normal text-4xl mt-2 uppercase font-serif">Votre Roadtrip</h2>
+        </div>
+
+        <div class="relative">
+            <div class="timeline-line"></div>
+            
+                <div id="jour-1" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 1</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Arrivée et quiétude au bord de la lagune</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après un court vol au départ de Conakry, posez vos valises dans un cadre chaleureux au cœur d’Abidjan. Profitez d’une fin d’après-midi paisible pour décompresser face aux eaux calmes de la lagune Ébrié. La brise marine et la lumière dorée tropicale marquent un départ de séjour tout en douceur.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>🛬 Accueil à l’aéroport Félix-Houphouët-Boigny</strong> : Atterrissage rapide et transfert fluide vers votre hôtel tout confort situé dans un quartier calme.</li><li><strong>🛏️ Installation et repos</strong> : Prise de possession de votre chambre 3 étoiles et moment de relaxation au bord de la piscine de l'hôtel.</li><li><strong>🌅 Première brise lagunaire</strong> : Dîner léger et contemplatif au bord de l'eau pour s'acclimater à la douceur ivoirienne.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour1.jpg" class="w-full h-64 object-cover" alt="Jour 1">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">ℹ️ Monnaie locale</p>
+                                <p class="text-gray-700">La monnaie est le Franc CFA (XOF). Des distributeurs automatiques fiables sont disponibles directement dans le hall des arrivées de l'aéroport.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-2" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 2</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Héritage culturel et sérénité au Plateau</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Prenez le temps d'explorer l'architecture singulière du quartier d'affaires du Plateau sous un angle apaisant. Visitez les espaces artistiques et terminez la journée face à l'immense verrière de la cathédrale emblématique de la métropole ivoirienne.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>🏛️ Musée des Civilisations de Côte d'Ivoire</strong> : Découverte sans presse de masques séculaires, parures royales et statuettes dans des salles climatisées feutrées.</li><li><strong>⛪ Visite contemplative de la Cathédrale Saint-Paul</strong> : Pause méditative sous l’imposante structure haubanée et contemplation de ses vitraux colorés grandioses.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour2.jpg" class="w-full h-64 object-cover" alt="Jour 2">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚕 Déplacements urbains</p>
+                                <p class="text-gray-700">Utilisez les applications de VTC locales (comme Yango) pour des trajets calmes, climatisés et à prix fixe sans négociation.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-3" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 3</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Bain de chlorophylle au Parc du Banco</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Poumon vert d’Abidjan, la forêt primaire du Banco offre une bouffée d'oxygène rare au milieu de la métropole. Marchez à l'ombre bienveillante d’arbres majestueux et ressourcez-vous au chant des oiseaux tropicaux.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>🌿 Balade ressourçante dans l’Arboretum du Banco</strong> : Promenade à pied sans dénivelé sous une canopée protectrice de bois précieux centenaires.</li><li><strong>🥤 Halte rafraîchissante au bord de la rivière sacrée</strong> : Dégustation d'un jus naturel de bissap bien frais en observant la flore luxuriante.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour3.jpg" class="w-full h-64 object-cover" alt="Jour 3">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">👟 Confort de marche</p>
+                                <p class="text-gray-700">Prévoyez des baskets légères fermées et un produit anti-moustique naturel pour profiter de la forêt en toute quiétude.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-4" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 4</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Nostalgie coloniale et embruns à Grand-Bassam</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Échappez-vous vers la première capitale historique du pays, classée à l’UNESCO. Entre demeures coloniales patinées par le temps et plages bercées par le ressac de l'Atlantique, la journée invite à une rêverie paisible.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>🏛️ Flânerie dans le Quartier France</strong> : Promenade bucolique entre bougainvilliers et façades d'époque chargées d'histoire littorale.</li><li><strong>🏖️ Déjeuner et repos face à l’océan</strong> : Dégustation de soles grillées les pieds dans le sable à l'ombre d'une paillote ventilée.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour4.jpg" class="w-full h-64 object-cover" alt="Jour 4">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🌊 Prudence océane</p>
+                                <p class="text-gray-700">La barre côtière de Grand-Bassam est réputée vigoureuse : préférez le farniente au bord de l’eau et trempez les pieds avec prudence.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-5" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 5</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Escapade florale et créative à Bingerville</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Cap sur l’ancienne cité coloniale de Bingerville, réputée pour sa tranquillité et son formidable patrimoine végétal. Arpentez de larges allées jalonnées de palmiers géants avant d'admirer les artisans au travail.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>🌺 Promenade au Jardin Botanique de Bingerville</strong> : Parcours poétique parmi des centaines d’essences végétales tropicales et de bambous géants.</li><li><strong>🪵 Découverte de l’artisanat d’art</strong> : Rencontre sereine avec des sculpteurs sur bois d'ébène et tisserands locaux de talent.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour5.jpg" class="w-full h-64 object-cover" alt="Jour 5">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">☕ Pause gourmande</p>
+                                <p class="text-gray-700">Goûtez à l’eau de coco fraîchement coupée devant vous par les petits vendeurs aux abords du jardin botanique.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-6" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 6</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Parenthèse insulaire sur l’Île Boulay</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Montez à bord d’un bateau-navette pour voguer vers l'Île Boulay et la célèbre Baie des Milliardaires. Loin du tumulte urbain, cette journée est dédiée au repos intégral dans un écrin de végétation bordé d'eau calme.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>⛵ Traversée lagunaire en bateau</strong> : Navigation paisible de 20 minutes offrant un panorama imprenable sur le port et les berges boisées.</li><li><strong>🌴 Détente absolue dans un écolodge lagunaire</strong> : Baignade en eau calme, sieste sur transat et saveurs ivoiriennes marinées.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour6.jpg" class="w-full h-64 object-cover" alt="Jour 6">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚤 Embarquement</p>
+                                <p class="text-gray-700">Les navettes partent régulièrement de l'embarcadère de Biétry ou de Yopougon selon l'établissement choisi.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-7" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 7</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Art contemporain et flâneries de Cocody</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Plongez dans le dynamisme artistique abidjanais au cœur de galeries intimistes et de jardins d'exposition. Dénichez de jolis souvenirs artisanaux sans bousculade pour immortaliser vos derniers instants en Côte d’Ivoire.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>🎨 Visite de la Fondation Donwahi</strong> : Immersion apaisée au milieu d'expositions de photographies et d'installations contemporaines ouest-africaines.</li><li><strong>🛍️ Balade douce au Marché Artisanal de Cocody</strong> : Achat de toiles peintes, batiks et perles traditionnelles dans une ambiance conviviale.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour7.jpg" class="w-full h-64 object-cover" alt="Jour 7">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎁 Souvenirs</p>
+                                <p class="text-gray-700">Les artisans acceptent le marchandage souriant et courtois : prenez le temps d'échanger autour d'un thé pour nouer contact.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-8" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 8</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Dernières saveurs et retour vers Conakry</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Savourez un dernier petit-déjeuner tropical en contemplant le ballet des pirogues sur la lagune. Préparez tranquillement vos bagages avant de rejoindre l'aéroport pour votre court vol retour.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li><strong>🥐 Matinée gourmande et préparation</strong> : Dernier brunch ivoirien avec fruits exotiques frais et départ serein de l'hôtel.</li><li><strong>🛫 Décollage vers Conakry</strong> : Embarquement pour le vol direct d'à peine deux heures reliant Abidjan à la capitale guinéenne.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Abidjan-cote-d’ivoire-414244qi7mbtr4d/main/jour8.jpg" class="w-full h-64 object-cover" alt="Jour 8">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⏰ Anticipation</p>
+                                <p class="text-gray-700">Prévoyez d’arriver à l'aéroport 2h30 avant l'heure de départ pour passer les contrôles sans aucun stress.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+        </div>
+    </section>
+
+    <section id="pratique" class="bg-white border-t border-gray-200 pt-12 pb-12 scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>💴</span> Budget
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🛬 Budget vol: </strong>112 €/pers (vol direct A/R)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🚆 Budget transports: </strong>90 €/pers (VTC Yango, navettes lagunaires, taxi Bassam)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🥗 Budget repas: </strong>180 €/pers (maquis gourmands et tables au bord de l'eau)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🛏️ Budget logement: </strong>325 €/pers (7 nuits en hôtel 3* tout confort)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🎭 Budget activités: </strong>58 €/pers (entrées réserves, musées, traversée Île Boulay)</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>☀️</span> Périodes Idéales
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">Mois de décembre à avril (saison sèche ensoleillée et propice aux balades)</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>📃</span> Infos pratiques
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">☀️ En mars, les températures oscillent entre 25 et 32°C avec un climat tropical humide. Prévoir des vêtements amples et en coton léger.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">💳 Paiement par Franc CFA (XOF). Les VTC et cartes bancaires fonctionnent dans les grands hôtels, mais gardez du liquide pour les maquis et artisans.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🚗 Les applications de commande de VTC comme Yango simplifient grandement les déplacements sans avoir à négocier les taxis compteurs.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">📶 Achetez une eSIM ou une carte SIM locale (Orange CI, MTN) dès l’aéroport pour disposer d’une connexion 4G continue et fluide.</p>
+                
+            </div>            
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>📃</span> Anecdotes
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🦇 Les chauves-souris sentinelles du Plateau:</strong> Chaque crépuscule, des dizaines de milliers de roussettes géantes s’envolent des manguiers du quartier des affaires pour un ballet aérien spectaculaire au-dessus des gratte-ciels.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🏢 La pyramide futuriste d’Abidjan:</strong> Au Plateau se dresse l'immeuble La Pyramide, chef-d'œuvre brutaliste des années 1970 imaginé comme un marché urbain vertical, unique en Afrique de l'Ouest.</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>📃</span> Spécialités culinaires
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🐟 Le Garba authentique:</strong> Semoule de manioc fermentée (attiéké) servie avec un darne de thon frit assaisonné d’oignons, piments frais et tomates concassées.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🍌 L’Alloco doré:</strong> Bananes plantains mûres découpées en dés et dorées à l’huile, accompagnées d'une sauce pimentée douce ou d'œufs durs.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>🍗 Le Poulet braisé à l'ivoirienne:</strong> Volaille longuement marinée aux épices locales, à l'ail et au gingembre, grillée lentement sur feu de braise pour une peau croustillante et fondante.</p>
+                
+            </div>            
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>🔗</span> Liens Utiles
+                </h4>
+                <ul class="text-sm space-y-3">
+                  <li><a href="https://mytripplanner-dotfr.github.io/Abidjan-cote-d’ivoire-414244qi7mbtr4d/map.html" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🗺️ Carte Interactive</strong></a></li>
+                    
+                        <li><a href="https://www.kayak.fr/flights/CKY-ABJ/2027-03-09/2027-03-16" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🛬 Réserve ton vol Conakry - Abidjan</strong></a></li>
+                    
+                        <li><a href="https://cotedivoiretourisme.ci/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>📘 Côte d’Ivoire Tourisme</strong></a></li>
+                    
+                        <li><a href="https://www.aircotedivoire.com/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>✈️ Air Côte d'Ivoire</strong></a></li>
+                    
+                        <li><a href="https://www.accuweather.com/fr/ci/abidjan/117910/weather-forecast/117910" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🌤️ AccuWeather Abidjan</strong></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200 py-6">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="font-serif text-lg text-template-roche mb-2 font-bold">
+                MyTrip<span class="text-template-ocre">Planner</span>
+            </p>
+
+                <div class="flex justify-center gap-4 text-[10px] md:text-xs text-slate-500 mb-4 font-semibold">
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Mentions Légales</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">CGU</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Confidentialité</a>
+                </div>
+
+            <p class="text-[10px] text-gray-400 mb-2">
+                &copy; 2025 MyTripPlanner. Tous droits réservés.
+            </p>
+
+            <div class="flex justify-center">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest px-2 py-0.5 border border-gray-200 rounded-full inline-block">
+                    🤖 Contenu généré par IA
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion Scroll & Menu
+        const navDesktop = document.getElementById('nav-desktop');
+        const navMobile = document.getElementById('nav-mobile');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                navDesktop.classList.remove('-translate-y-full');
+                navMobile.classList.remove('-translate-y-full');
+            } else {
+                navDesktop.classList.add('-translate-y-full');
+                navMobile.classList.add('-translate-y-full');
+            }
+        });
+        
+        // Active Link Highlighter
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    document.querySelectorAll('.mobile-link').forEach(link => {
+                        const linkHref = link.getAttribute('href').substring(1);
+                        if (linkHref === activeId) {
+                            link.classList.remove('bg-gray-100', 'text-gray-700');
+                            link.classList.add('bg-template-ocre', 'text-white', 'shadow-md');
+                            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        } else {
+                            link.classList.add('bg-gray-100', 'text-gray-700');
+                            link.classList.remove('bg-template-ocre', 'text-white', 'shadow-md');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+
+        document.querySelectorAll('div[id^="jour-"], section#pratique').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
